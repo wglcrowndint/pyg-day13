@@ -1,0 +1,27 @@
+  <bean id="queueTextDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="pinyougou_queue_solr"/>
+   </bean>
+
+
+   发送方和接收方的Destination的constructor-arg value值要一致
+
+
+
+
+   Caused by: org.apache.activemq.ConnectionFailedException: The JMS connection has failed: Software caused connection abort: recv failed
+   	at org.apache.activemq.ActiveMQConnection.checkClosedOrFailed(ActiveMQConnection.java:1466)
+   	at org.apache.activemq.ActiveMQConnection.createSession(ActiveMQConnection.java:323)
+   	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+   	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+   	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+   	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+   	at org.springframework.jms.connection.SingleConnectionFactory$SharedConnectionInvocationHandler.invoke(SingleConnectionFactory.java:620)
+   	at com.sun.proxy.$Proxy48.createSession(Unknown Source)
+   	at org.springframework.jms.support.JmsAccessor.createSession(JmsAccessor.java:192)
+   	at org.springframework.jms.core.JmsTemplate.execute(JmsTemplate.java:485)
+   	... 74 more
+   Caused by: java.net.SocketException: Software caused connection abort: recv failed
+   	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+   	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+   	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:171)
+   	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:141)
